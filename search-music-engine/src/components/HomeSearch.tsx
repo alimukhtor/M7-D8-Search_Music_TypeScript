@@ -1,12 +1,12 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import { MdPersonSearch } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
-import { IMusic } from "./types/music";
+import { Welcome, Album, Artist } from "./types/music";
 import { Form, Container, Row, Col } from "react-bootstrap";
 
 const HomeSearch = () => {
   const [searchInput, setSearchInput] = useState("");
-  const [music, setMusic] = useState<IMusic[]>([]);
+  const [music, setMusic] = useState<Welcome[]>([]);
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
     console.log(setSearchInput(e.target.value));
