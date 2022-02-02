@@ -8,14 +8,14 @@ import {Container} from 'react-bootstrap'
 function App() {
   return (
     <Container>
-    <BrowserRouter>
-        <div className="App">
-              <Routes>
-                <Route path='/' element={<HomeSearch />} />
-                <Route path='detail' element={<MusicDetail />} />
-              </Routes>
-        </div>
-     </BrowserRouter>
+      <BrowserRouter>
+          <div className="App">
+                <Routes>
+                  <Route path='/' element={<HomeSearch />} />
+                  <Route path='/:trackId' element={<MusicDetail />} />
+                </Routes>
+          </div>
+      </BrowserRouter>
      </Container>
 
   );

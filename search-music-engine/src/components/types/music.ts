@@ -7,9 +7,9 @@ export interface IMusic{
         id: number
         title: String
         cover: String
-        cover_Small:string
-        cover_Medium:string, 
-        cover_Big:string 
+        cover_small:string
+        cover_medium:string, 
+        cover_big:string 
         tracklist: String
 
     }
