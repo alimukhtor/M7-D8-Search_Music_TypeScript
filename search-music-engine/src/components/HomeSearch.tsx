@@ -53,14 +53,13 @@ const HomeSearch = () => {
                 {music.map((song) => (
                     <Col xs={8} md={3}>
                     <img
-                        src={song.album.cover_small}
-                        className="card-img-top pt-2 img-fluid"
+                        src={song.album.cover_medium}
+                        className="card-img-top pt-2"
                         alt="..."
-                        // style={{ objectFit: "cover" }}
                     />
                     <div className="card-body text-light">
                         <div className="buttoncard"></div>
-                        <Link to="/singleSong/:trackId">
+                        <Link to={`/singleSong/${song.id}`}>
                         <div
                             className={
                             location.pathname === "/favorites" ? " active" : ""
@@ -70,9 +69,9 @@ const HomeSearch = () => {
                             Song - {song.title}
                         </div>
                         </Link>
-                        {/* <Link to="/singleSong/:trackId">
+                        <Link to={`/singleSong/${song.id}`}>
                         <p className="hp-subhero-title">Song - {song.title}</p>
-                         </Link> */}
+                         </Link>
                         <p>Album - {song.album.title}</p>
                         <p className="hp-subhero-subtitle mb-0">{song.artist.name}</p>
                     </div>
