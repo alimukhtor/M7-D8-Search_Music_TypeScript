@@ -11,7 +11,7 @@ const HomeSearch =()=> {
             if(response.ok){
                 const data = await response.json()
                 setMusic(data.data)
-                // console.log(data);
+                console.log(data);
             }
         } catch (error) {
             console.log(error);
@@ -26,7 +26,7 @@ const HomeSearch =()=> {
         <>
         {
             music.map(song => (
-                <h1 key={song.id}>{song.title}</h1>
+                <h1 key={song.id}>{song.artist.name}</h1>
 
             ))
         }
