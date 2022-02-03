@@ -1,4 +1,7 @@
-
+export interface SongArray{
+    title:string
+    type:string
+}
 export interface Welcome {
     id:                      number;
     readable:                boolean;
