@@ -25,7 +25,7 @@ const MusicDetail = () => {
 
   useEffect(() => {
     fetchSongDetail();
-  }, []);
+  });
 
   return (
     <Container>
