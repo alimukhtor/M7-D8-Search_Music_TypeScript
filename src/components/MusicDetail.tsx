@@ -2,13 +2,10 @@ import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { FiClock } from "react-icons/fi";
-import {SongDetails } from "./types/music";
+import { SongDetails } from "./types/music";
 
 const MusicDetail = () => {
-  const [songDetails, setSongDetail] = useState<SongDetails>({
-    title: '',
-    duration: 0,
-  });
+  const [songDetails, setSongDetail] = useState<SongDetails | null>(null);
 
   const { id } = useParams();
   const fetchSongDetail = async () => {
@@ -27,29 +24,34 @@ const MusicDetail = () => {
     fetchSongDetail();
   });
 
-  return (
+  return songDetails ? (
     <Container>
-      <Row  className="mt-5">
-        <Col md={6}>
-          {/* <img src={songDetails.album.cover_medium}/> */}
-        </Col>
-        <Col md={9}>
-          <div className="">
-            <h4 className="text-start text-muted">Title</h4>
+      <Row className="mt-5">
+        <Col xs={6} md={6}>
+          <div className="d-flex align-items-end mb-5">
+            <img
+              src={songDetails.album.cover_big}
+              style={{ height: "250px" }}
+            />
+            <h4 className="mx-3 text-light">{songDetails.artist.name}</h4>
           </div>
         </Col>
-        <Col md={3}>
+        <Col xs={9} md={9}>
+          <h4 className="text-start text-muted">Title</h4>
+        </Col>
+        <Col xs={3} md={3}>
           <FiClock className="mt-2 text-muted" />
         </Col>
         <hr className="text-muted" />
-        <Col md={10}>
+        <Col xs={10} md={10}>
           <span className="d-flex text-light">{songDetails.title}</span>
+          {/* <h3 className="text-light">{songDetails.artist.name}</h3> */}
         </Col>
-        <Col md={1}>
-          <span className="text-muted">{songDetails.duration}</span>
+        <Col xs={1} md={1}>
+          <span className="text-muted">{songDetails.duration}s</span>
         </Col>
       </Row>
     </Container>
-  );
+  ) : null;
 };
 export default MusicDetail;

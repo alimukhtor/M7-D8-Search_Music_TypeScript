@@ -1,25 +1,31 @@
-export interface SongDetails{
-    title:string
-    duration:number,
-    songArray?:SongArray,
+export interface SongDetails extends SongArray{
+    isrc: string;
+    share: string;
+    track_position: number;
+    disk_number: number;
+    release_date: Date;
+    bpm: number;
+    gain: number;
+    available_countries: string[];
+    contributors: Artist[];
 }
 export interface SongArray {
-    id:                      number;
-    readable:                boolean;
-    title:                   string;
-    title_short:             string;
-    title_version:           string;
-    link:                    string;
-    duration:                number;
-    rank:                    number;
-    explicit_lyrics:         boolean;
+    id: number;
+    readable: boolean;
+    title: string;
+    title_short: string;
+    title_version: string;
+    link: string;
+    duration: number;
+    rank: number;
+    explicit_lyrics: boolean;
     explicit_content_lyrics: number;
-    explicit_content_cover:  number;
-    preview:                 string;
-    md5_image:               string;
-    artist:                  Artist;
-    album:                   Album;
-    type:                    string;
+    explicit_content_cover: number;
+    preview: string;
+    md5_image: string;
+    artist: Artist;
+    album: Album;
+    type: string;
 }
 
 export interface Album {
