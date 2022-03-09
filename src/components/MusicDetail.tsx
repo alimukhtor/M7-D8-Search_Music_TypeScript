@@ -31,6 +31,7 @@ const MusicDetail = () => {
           <div className="d-flex align-items-end mb-5">
             <img
               src={songDetails.album.cover_big}
+              alt="img"
               style={{ height: "250px" }}
             />
             <h4 className="mx-3 text-light">{songDetails.artist.name}</h4>
