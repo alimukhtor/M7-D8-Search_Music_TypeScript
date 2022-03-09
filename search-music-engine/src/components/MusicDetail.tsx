@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { FiClock } from "react-icons/fi";
-import { FcLike } from "react-icons/fc";
-import { SongArray, SongDetails, Album } from "./types/music";
+import { SongArray, SongDetails } from "./types/music";
 
 const MusicDetail = () => {
   const [songDetails, setSongDetail] = useState<SongDetails>({
@@ -12,7 +11,6 @@ const MusicDetail = () => {
   });
 
   const { id } = useParams();
-  // const trackId = params.id
   const fetchSongDetail = async () => {
     const response = await fetch(
       "https://striveschool-api.herokuapp.com/api/deezer/track/" + id
@@ -49,9 +47,6 @@ const MusicDetail = () => {
         </Col>
         <Col md={1}>
           <span className="text-muted">{songDetails.duration}</span>
-        </Col>
-        <Col md={1}>
-          <FcLike />
         </Col>
       </Row>
     </Container>

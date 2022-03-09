@@ -1,8 +1,7 @@
 export interface SongDetails{
     title:string
     duration:number,
-    album?:Album,
-    artist?:Artist
+    songArray?:SongArray,
 }
 export interface SongArray {
     id:                      number;
