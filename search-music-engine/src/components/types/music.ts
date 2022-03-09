@@ -1,8 +1,10 @@
-export interface SongArray{
+export interface SongDetails{
     title:string
-    type:string
+    duration:number,
+    album?:Album,
+    artist?:Artist
 }
-export interface Welcome {
+export interface SongArray {
     id:                      number;
     readable:                boolean;
     title:                   string;

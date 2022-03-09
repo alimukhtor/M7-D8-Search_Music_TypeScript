@@ -40,3 +40,17 @@
     transform: rotate(360deg);
   }
 }
+
+.card-img-top{
+  padding: 30px;
+  transition: transform .2s; /* Animation */
+  width: 200px;
+  height: 400px;
+  margin: 0 auto;
+  border-radius: 50px;
+}
+
+
+.card-img-top:hover{
+  transform: scale(1.2);
+}

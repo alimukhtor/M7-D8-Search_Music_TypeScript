@@ -1,67 +1,60 @@
-import {useState, useEffect} from 'react'
-import { useParams } from 'react-router-dom'
+import { useState, useEffect } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import { useParams } from "react-router-dom";
+import { FiClock } from "react-icons/fi";
+import { FcLike } from "react-icons/fc";
+import { SongArray, SongDetails, Album } from "./types/music";
 
-import { Welcome, SongArray } from "./types/music";
+const MusicDetail = () => {
+  const [songDetails, setSongDetail] = useState<SongDetails>({
+    title: '',
+    duration: 0,
+  });
 
-const MusicDetail =()=> {
-    const [songDetails, setSongDetail] = useState<SongArray>({type: '', title: ''})
+  const { id } = useParams();
+  // const trackId = params.id
+  const fetchSongDetail = async () => {
+    const response = await fetch(
+      "https://striveschool-api.herokuapp.com/api/deezer/track/" + id
+    );
+    if (response.ok) {
+      const data = await response.json();
+      console.log("Song id:", data);
 
-
-    const {id} = useParams()
-    // const trackId = params.id
-    const fetchSongDetail =async()=> {
-        const response = await fetch("https://striveschool-api.herokuapp.com/api/deezer/track/" + id)
-        if(response.ok){
-            const data = await response.json()
-            console.log("Song id:", data);
-            
-            setSongDetail(data)
-        }
+      setSongDetail(data);
     }
+  };
 
+  useEffect(() => {
+    fetchSongDetail();
+  }, []);
 
-    useEffect(() => {
-        fetchSongDetail();
-      }, []);
-    
-    return(
-        <>
-        {
-           songDetails?
-                <div id="favourite-songs-container" className="bg-wrapper px-4 text-light">
-                <div className="row my-3">
-                  <div className="col-12 album-action-icons d-flex align-items-center">
-                    <i className="bi bi-play-circle-fill">
-                      <div className="white-bg"></div>
-                    </i>
-                    <i className="bi bi-three-dots"></i>
-                  </div>
-                </div>
-    
-                <div className="row light-gray-text">
-                  <div className="col-1">
-                    <p>#</p>
-                  </div>
-    
-                  <div className="col-10">
-                    <p>{songDetails.title}</p>
-                  </div>
-    
-                  <div className="col-1">
-                    <p>
-                      <i className="bi bi-clock"></i>
-                    </p>
-                  </div>
-                </div>
-                <div className="divider"></div>
-              </div>
-            : null
-
-
-            
-               
-        }
-        </>
-    )
-}
-export default MusicDetail
+  return (
+    <Container>
+      <Row  className="mt-5">
+        <Col md={6}>
+          {/* <img src={songDetails.album.cover_medium}/> */}
+        </Col>
+        <Col md={9}>
+          <div className="">
+            <h4 className="text-start text-muted">Title</h4>
+          </div>
+        </Col>
+        <Col md={3}>
+          <FiClock className="mt-2 text-muted" />
+        </Col>
+        <hr className="text-muted" />
+        <Col md={10}>
+          <span className="d-flex text-light">{songDetails.title}</span>
+        </Col>
+        <Col md={1}>
+          <span className="text-muted">{songDetails.duration}</span>
+        </Col>
+        <Col md={1}>
+          <FcLike />
+        </Col>
+      </Row>
+    </Container>
+  );
+};
+export default MusicDetail;
