@@ -1,7 +1,7 @@
 import { useState, useEffect, ChangeEvent } from "react";
 import { MdPersonSearch } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
-import { Album, Artist, SongArray } from "./types/music";
+import { SongArray } from "./types/music";
 import { Form, Row, Col } from "react-bootstrap";
 
 const HomeSearch = () => {

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import { FiClock } from "react-icons/fi";
-import { SongArray, SongDetails } from "./types/music";
+import {SongDetails } from "./types/music";
 
 const MusicDetail = () => {
   const [songDetails, setSongDetail] = useState<SongDetails>({
