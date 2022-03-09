@@ -51,7 +51,7 @@ const HomeSearch = () => {
       <Col>
         <Row className="mt-5">
           {music.map((song) => (
-            <Col xs={12} md={3}>
+            <Col xs={12} md={4}>
               <Link to={`/singleSong/${song.id}`}>
                 <div
                   className={
